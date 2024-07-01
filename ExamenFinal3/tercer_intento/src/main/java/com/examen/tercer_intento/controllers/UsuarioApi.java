@@ -23,19 +23,19 @@ public class UsuarioApi {
 
     private final UsuarioServices usuarioServices;
 
-    //Nombrar registros
+    //Nombrar usuario
     @GetMapping("")
-    public List<Usuario> mostrarRegistro(){
+    public List<Usuario> mostrarUsuario(){
         return usuarioServices.mostrarTodo();
     }
 
-    //Buscar registro por id
+    //Buscar usuario por id
     @GetMapping("/{id}")
     public Usuario encontrarUsuario(@PathVariable("id") Long id){
         return usuarioServices.encontrarId(id);
     }
     
-    //Crear registro
+    //Crear usuario
     @PostMapping()
     public Usuario crearUsuario(@RequestParam("nombre")String nombre, @RequestParam("correo") String correo, @RequestParam("clave") String clave, @RequestParam("confirClave") String confirClave){
         Usuario usuario = new Usuario(nombre, correo, clave, confirClave);
@@ -43,7 +43,7 @@ public class UsuarioApi {
 
     }
 
-    //Actualizar registro
+    //Actualizar usuario
     @PutMapping("/{id}")
     public Usuario actualizarUsuario(@PathVariable("id") Long id,@RequestParam("nombre")String nombre, @RequestParam("correo") String correo, @RequestParam("clave") String clave, @RequestParam("confirClave") String confirClave){
         Usuario usuario = usuarioServices.encontrarId(id);
@@ -51,7 +51,7 @@ public class UsuarioApi {
         return usuarioServices.actualizarUsuario(usuario);
     }
 
-    //Eliminar registro
+    //Eliminar usuario
     @DeleteMapping("/{id}")
     public void eliminarUsuario(@PathVariable("id") Long id){
         usuarioServices.eliminarUsuario(id);

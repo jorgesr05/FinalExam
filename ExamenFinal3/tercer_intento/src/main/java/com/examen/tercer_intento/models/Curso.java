@@ -3,6 +3,7 @@ package com.examen.tercer_intento.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -34,6 +35,7 @@ public class Curso extends ModeloBase{
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "")
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
 }

@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UsuarioServices {
     private final UsuarioRepository usuarioRepository;
+    
 
     //Buscar todos los usuarios
     public List<Usuario> mostrarTodo(){
@@ -26,6 +27,11 @@ public class UsuarioServices {
 
     //Crear un registro
     public Usuario crearUsuario(Usuario usuario){
+        //Validar contraseñas iguales
+        if (!usuario.getClave().equals(usuario.getConfirClave())) {
+            throw new IllegalArgumentException("Las contraseñas no coinciden.");
+        }
+
         return usuarioRepository.save(usuario);
     }
 

@@ -2,17 +2,20 @@ package com.examen.tercer_intento.controllers;
 
 import java.util.List;
 
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.examen.tercer_intento.models.Usuario;
 import com.examen.tercer_intento.services.UsuarioServices;
+
 
 import lombok.AllArgsConstructor;
 
@@ -38,7 +41,7 @@ public class UsuarioApi {
     //Crear usuario
     @PostMapping()
     public Usuario crearUsuario(@RequestParam("nombre")String nombre, @RequestParam("correo") String correo, @RequestParam("clave") String clave, @RequestParam("confirClave") String confirClave){
-        Usuario usuario = new Usuario(nombre, correo, clave, confirClave);
+        Usuario usuario = new Usuario(nombre, correo, clave, confirClave,null);     
         return usuarioServices.crearUsuario(usuario);
 
     }
